@@ -60,8 +60,7 @@ RUN -d \
   -v /config:/config \
   -v /config:/downloads \
   --restart unless-stopped \
-  lscr.io/linuxserver/jackett:latest
-  && jackett --version
+  lscr.io/linuxserver/jackett:latest && jackett --version
 
 
 CMD exec /app/Jackett/jackett --NoRestart --NoUpdates -p $PORT
