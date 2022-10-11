@@ -51,6 +51,8 @@ COPY ./config /config
 
 # Run -d --name=jackett -e PUID=1000 -e PGID=1000-e TZ=Europe/London -p 9117:9117 -v /var/www/git/bots/config:/config -v /var/www/git/bots/config:/downloads --restart unless-stopped lscr.io/linuxserver/jackett
 
+CMD exec /app/Jackett/jackett --NoRestart --NoUpdates -p $PORT
+
 RUN -d \
   --name=jackett \
   -e PUID=1000 \
@@ -60,7 +62,4 @@ RUN -d \
   -v /config:/config \
   -v /config:/downloads \
   --restart unless-stopped \
-  lscr.io/linuxserver/jackett:latest && jackett --version
-
-
-CMD exec /app/Jackett/jackett --NoRestart --NoUpdates -p $PORT
+  lscr.io/linuxserver/jackett:latest 
